@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internet hotspot - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <form name="sendin" action="$(link-login-only)" method="post" >
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+    // -->
+    </script>
+
+    <body class="lite">
+
+        <body class="dark">
+
+            <header class="cabecalho">
+                <div>
+                    <img class="logoSenai" src="img/Logo_SENAI_BRANCO_NEGATIVO.png" alt="">
+                </div>
+            </header>
+
+            <!-- <form class="vertical-form" name="login" action="$(link-login-only)" method="post" background="#A03472"
+            $(if chap-id) onSubmit="return doLogin()" $(endif)>
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" /> -->
+          
+            <form name="sendin" action="$(link-login-only)" method="post"
+                $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                <input type="hidden" name="dst" value="true" />
+                <input type="hidden" name="dst" value="true" />
+                <input type="hidden" name="popup" value="true" />
+
+            </form>
+
+            <script src="/md5.js"></script>
+            <script>
+                function doLogin() {
+                    document.sendin.cpf.value = document.login.cpf.value;
+                    document.sendin.senha.value = hexMD5('$(chap-id)' + document.login.senha.value + '$(chap-challenge)');
+                    document.sendin.submit();
+                    return false;
+                }
+
+            </script>
+
+            <div class="ie-fixMinHeight">
+                <div class="main">
+                    <div class="wrap animated fadeIn">
+                        <form name="login" action="$(link-login-only)" method="post" $(if chap-id)
+                            onSubmit="return doLogin()" $(endif)>
+                            <input type="hidden" name="dst" value="$(link-orig)" />
+                            <input type="hidden" name="popup" value="true" />
+
+
+                            <p class="info $(if error)alert$(endif)">
+                                Olá bem vindo (a) <br /> </a>
+                                <br />
+                            </p>
+                            <label>
+                                <img class="ico" src="img/user.svg" alt="#" />
+                                <input class="input_Login" name="username" value="$(username)" type="text" placeholder="CPF" />
+                            </label>
+
+                            <label>
+                                <img class="ico" src="img/password.svg" alt="#" />
+                                <input name="password" type="password" label="false" placeholder="Senha" />
+                            </label>
+
+                            <input type="submit" value="Conectar"/>
+
+                            <div class="SemCadastro">
+
+                                <span class="text1">
+                                    Você ainda não é
+
+                                    <a href="Cadastrar.html" class="text2">
+                                        cadastrado?
+                                    </a>
+                                </span>
+                            </div>
+
+
+                        </form>
+                        <p class="info bt"></p>
+
+                    </div>
+                </div>
+            </div>
+        </body>
+
+</html>
